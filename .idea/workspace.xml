@@ -52,9 +52,12 @@
       <file leaf-file-name="example_server.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/example_server.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-353">
-              <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-              <folding />
+            <state relative-caret-position="445">
+              <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+              <folding>
+                <element signature="e#437#557#0" expanded="true" />
+                <marker date="1519334936332" expanded="true" signature="2766:2856" ph="INSERT INTO users... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -209,9 +212,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/example_server.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-353">
-          <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="445">
+          <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding>
+            <element signature="e#437#557#0" expanded="true" />
+            <marker date="1519334936332" expanded="true" signature="2766:2856" ph="INSERT INTO users... " />
+          </folding>
         </state>
       </provider>
     </entry>

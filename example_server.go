@@ -7,7 +7,7 @@ package main
 // connect to the database and we will see how to to do that shortly
 import (
 	"net/http"
-	"encoding/json"
+	//"encoding/json"
 	"github.com/gorilla/mux"
 	"log"
 	"database/sql"
@@ -46,7 +46,11 @@ func showSampleHumans(response http.ResponseWriter, req *http.Request) {
 	// What this line of code does for us is that it allows us to encode resources in the response and this will be sent
 	// over the network when this function is executed and the reason that we do this is because we do not have a data
 	// base to send these over to so we have to work with what we got
-	json.NewEncoder(response).Encode(sampleHumans)
+	fmt.Println("The sample humans were retrieved and shown")
+}
+
+func postSampleHumans(response http.ResponseWriter, req *http.Request) {
+
 }
 
 func main() {
@@ -54,7 +58,7 @@ func main() {
 	var router = mux.NewRouter()
 	sampleHumans = append(sampleHumans, Human{"Matthew", "Harrilal", 12})
 	router.HandleFunc("/showHumans",showSampleHumans).Methods("GET")
-
+	router.HandleFunc("/postHumans", postSampleHumans).Methods("POST")
 	// Now at this point we are creating the connection string and this is basically interpolating all the credentials
 	// for the database and the neccesary format
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
@@ -68,13 +72,25 @@ func main() {
 	}
 	defer db.Close()
 
+	sqlStatement := `
+INSERT INTO users (age, email, first_name, last_name)
+VALUES ($1, $2, $3, $4)
+RETURNING id`
+	id := 0
+	err = db.QueryRow(sqlStatement, 30, "jon@calhoun.io", "Jonathan", "Calhoun").Scan(&id)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("New record ID is:", id)
+
+
 	err = db.Ping()
 	if err != nil {
 		panic(err)
 	}
 
 	fmt.Println("Succesfully connected")
-	log.Fatal(http.ListenAndServe(":12345", router))
+	log.Fatal(http.ListenAndServe(":5432", router))
 }
 
 // Now the next step is to actually connect our server to the database
